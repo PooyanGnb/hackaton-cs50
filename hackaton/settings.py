@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'hackaton.wsgi.application'
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'fahimdb',
+       'NAME': 'hackatoncs50db',
        'USER': 'root',
        'PASSWORD': '',
        'HOST': '127.0.0.1',
