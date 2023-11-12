@@ -112,6 +112,8 @@ font-family: 'Poppins', sans-serif;
 ---------------------------------------------------- */
 :root {
   --ltn__primary-color: #000000;
+  --ltn__primary-color-4:#ffffff;
+  --ltn__primary-color-5:#ffe8e8;
   --ltn__primary-color-2: #041113;
   /* Darken */
   --ltn__primary-color-3: #133236;
@@ -122,6 +124,7 @@ font-family: 'Poppins', sans-serif;
   --ltn__secondary-color-3: #fb412a;
   /* Lighten */
   --ltn__heading-color: #071c1f;
+  --ltn__heading-color-2: #ffffff;
   --ltn__paragraph-color: #5C727D;
   --ltn__heading-font: 'Poppins', sans-serif;
   --ltn__body-font: 'Nunito Sans', sans-serif;
@@ -291,7 +294,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  color: var(--ltn__heading-color);
+  color: var(--ltn__heading-color-2);
   clear: both;
   font-family: Vazir-Medium-FD;
   font-weight: 700;
@@ -3180,7 +3183,11 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 
 .ltn__breadcrumb-list ul li:last-child {
   margin-left: 0;
-  color: var(--ltn__primary-color); }
+  color: var(--ltn__primary-color-4); }
+
+.ltn__breadcrumb-list ul li:not(:last-child) {
+  /* margin-left: 0; */
+  color: var(--ltn__primary-color-5); }
 
 .ltn__breadcrumb-list ul li:after {
   position: absolute;
@@ -5283,7 +5290,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   z-index: 999;
   background-color: transparent; }
   .ltn__header-transparent .top-area-color-white {
-    background-color: transparent; }
+    background-color: rgba(0, 0, 0, 0.5); }
 
 /* ----------------------------------------
   Utilize Mobile Menu

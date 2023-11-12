@@ -1,0 +1,491 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="ltn__utilize-overlay"></div>
+
+    <!-- BREADCRUMB AREA START -->
+    <div class="ltn__breadcrumb-area text-left bg-overlay-black-40 bg-image "  data-bg="{% static 'img/bg/21.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ltn__breadcrumb-inner">
+                        <h1 class="page-title">درباره ما</h1>
+                        <div class="ltn__breadcrumb-list">
+                            <ul>
+                                <li><a href="index.html"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> صفحه اصلی</a></li>
+                                <li>درباره ما</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BREADCRUMB AREA END -->
+
+    <!-- ABOUT US AREA START -->
+    <div class="ltn__about-us-area pt-120--- pb-90 mt--30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 align-self-center">
+                    <div class="about-us-img-wrap about-img-left">
+                        <img src="{% static 'img/others/13.png' %}" alt="About Us Image">
+                        <div class="about-us-img-info about-us-img-info-2 about-us-img-info-3">
+                            
+                            <div class="ltn__video-img ltn__animation-pulse1">
+                                <img src="{% static 'img/others/8.png' %}" alt="video popup bg image">
+                                <a class="ltn__video-icon-2 ltn__video-icon-2-border---" href="#"  data-rel="lightcase:myCollection">
+                                    <i class="fa fa-play"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 align-self-center">
+                    <div class="about-us-info-wrap">
+                        <div class="section-title-area ltn__section-title-2--- mb-20">
+                            <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">درباره ما</h6>
+                            <h1 class="section-title">بازار اجاره املاک در <span>کرج</span></h1>
+                            <p>بیش از 39000 نفر در بیش از 70 کشور در سراسر این وسعت پوشش جهانی، همراه با خدمات تخصصی برای ما کار می کنند.</p>
+                        </div>
+                        <ul class="ltn__list-item-half clearfix">
+                            <li>
+                                <i class="flaticon-home-2"></i>
+                                خانه رویای
+                            </li>
+                            <li>
+                                <i class="flaticon-mountain"></i>
+                                بهترین منطقه
+                            </li>
+                            <li>
+                                <i class="flaticon-heart"></i>
+                                سبک زندگی استثنایی
+                            </li>
+                            <li>
+                                <i class="flaticon-secure"></i>
+                                امنیت بالا
+                            </li>
+                        </ul>
+                        <div class="ltn__callout bg-overlay-theme-05  mt-30">
+                            <p>جهت کسب اطلاعات بیشتر <br>
+                                با کارشناسان ما تماس بگیرید </p>
+                        </div>
+                        <div class="btn-wrapper animated">
+                            <a href="service.html" class="theme-btn-1 btn btn-effect-1">دیگر خدمات</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ABOUT US AREA END -->
+
+    <!-- FEATURE AREA START ( Feature - 6) -->
+    <div class="ltn__feature-area section-bg-1 pt-120 pb-90 mb-120---">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title-area ltn__section-title-2--- text-center">
+                        <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">خدمات ما</h6>
+                        <h1 class="section-title">تمرکز اصلی ما</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row ltn__custom-gutter--- justify-content-center">
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
+                        <div class="ltn__feature-icon">
+                            <!-- <span><i class="flaticon-house"></i></span> -->
+                            <img src="{% static 'img/icons/icon-img/21.png' %}" alt="#">
+                        </div>
+                        <div class="ltn__feature-info">
+                            <h3><a href="service-details.html">خرید</a></h3>
+                            <p>بیش از 1 میلیون خانه برای فروش در وب سایت موجود است، ما می توانیم شما را با خانه ای که می خواهید آن را خانه بنامید مطابقت دهیم..</p>
+                            <a class="ltn__service-btn" href="service-details.html">جستجو <i class="flaticon-right-arrow"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1 active">
+                        <div class="ltn__feature-icon">
+                            <!-- <span><i class="flaticon-house-3"></i></span> -->
+                            <img src="{% static 'img/icons/icon-img/22.png' %}" alt="#">
+                        </div>
+                        <div class="ltn__feature-info">
+                            <h3><a href="service-details.html">اجاره</a></h3>
+                            <p>بیش از 1 میلیون خانه برای فروش در وب سایت موجود است، ما می توانیم شما را با خانه ای که می خواهید آن را خانه بنامید مطابقت دهیم..</p>
+                            <a class="ltn__service-btn" href="service-details.html">جستجو <i class="flaticon-right-arrow"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
+                        <div class="ltn__feature-icon">
+                            <!-- <span><i class="flaticon-deal-1"></i></span> -->
+                            <img src="{% static 'img/icons/icon-img/23.png' %}" alt="#">
+                        </div>
+                        <div class="ltn__feature-info">
+                            <h3><a href="service-details.html">فروش</a></h3>
+                            <p>بیش از 1 میلیون خانه برای فروش در وب سایت موجود است، ما می توانیم شما را با خانه ای که می خواهید آن را خانه بنامید مطابقت دهیم..</p>
+                            <a class="ltn__service-btn" href="service-details.html">جستجو <i class="flaticon-right-arrow"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FEATURE AREA END -->
+
+    <!-- TEAM AREA START (Team - 3) -->
+    <div class="ltn__team-area pt-115 pb-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title-area ltn__section-title-2--- text-center">
+                        <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">تیم</h6>
+                        <h1 class="section-title">مشاورین املاک ما</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-sm-6">
+                    <div class="ltn__team-item ltn__team-item-3---">
+                        <div class="team-img">
+                            <img src="{% static 'img/team/4.jpg' %}" alt="Image">
+                        </div>
+                        <div class="team-info">
+                            <h4><a href="team-details.html">رابرت</a></h4>
+                            <h6 class="ltn__secondary-color">مدیریت مجموعه</h6>
+                            <div class="ltn__social-media">
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="ltn__team-item ltn__team-item-3---">
+                        <div class="team-img">
+                            <img src="{% static 'img/team/2.jpg' %}" alt="Image">
+                        </div>
+                        <div class="team-info">
+                            <h4><a href="team-details.html">اندرسون</a></h4>
+                            <h6 class="ltn__secondary-color">کارشناس فروش</h6>
+                            <div class="ltn__social-media">
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="ltn__team-item ltn__team-item-3---">
+                        <div class="team-img">
+                            <img src="{% static 'img/team/5.jpg' %}" alt="Image">
+                        </div>
+                        <div class="team-info">
+                            <h4><a href="team-details.html">میرندا</a></h4>
+                            <h6 class="ltn__secondary-color">مشاور برتر</h6>
+                            <div class="ltn__social-media">
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- TEAM AREA END -->
+
+    <!-- TESTIMONIAL AREA START (testimonial-7) -->
+    <div class="ltn__testimonial-area section-bg-1--- bg-image-top pt-115 pb-70" data-bg="{% static 'img/bg/20.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title-area ltn__section-title-2--- text-center">
+                        <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">نظرات مشتریان</h6>
+                        <h1 class="section-title">بازخورد مشتریان املاک ما</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row ltn__testimonial-slider-5-active slick-arrow-1">
+                <div class="col-lg-4">
+                    <div class="ltn__testimonial-item ltn__testimonial-item-7">
+                        <div class="ltn__testimoni-info">
+                            <p><i class="flaticon-left-quote-1"></i> 
+                                لورم ایپسوم متن ساختگی است که در هر زمان میتوان آن را تغییر یا ویرایش کنید.لورم ایپسوم متن ساختگی است که در هر زمان میتوان آن را تغییر یا ویرایش کنید.لورم ایپسوم متن ساختگی است که در هر زمان میتوان آن را تغییر یا ویرایش کنید.</p>
+                            <div class="ltn__testimoni-info-inner">
+                                <div class="ltn__testimoni-img">
+                                    <img src="{% static 'img/testimonial/1.jpg' %}" alt="#">
+                                </div>
+                                <div class="ltn__testimoni-name-designation">
+                                    <h5>طراحان وب</h5>
+                                    <label>خریدار</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="ltn__testimonial-item ltn__testimonial-item-7">
+                        <div class="ltn__testimoni-info">
+                            <p><i class="flaticon-left-quote-1"></i> 
+                                لورم ایپسوم متن ساختگی است که در هر زمان میتوان آن را تغییر یا ویرایش کنید.لورم ایپسوم متن ساختگی است که در هر زمان میتوان آن را تغییر یا ویرایش کنید.لورم ایپسوم متن ساختگی است که در هر زمان میتوان آن را تغییر یا ویرایش کنید.</p>
+                            <div class="ltn__testimoni-info-inner">
+                                <div class="ltn__testimoni-img">
+                                    <img src="{% static 'img/testimonial/1.jpg' %}" alt="#">
+                                </div>
+                                <div class="ltn__testimoni-name-designation">
+                                    <h5>طراحان وب</h5>
+                                    <label>خریدار</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="ltn__testimonial-item ltn__testimonial-item-7">
+                        <div class="ltn__testimoni-info">
+                            <p><i class="flaticon-left-quote-1"></i> 
+                                لورم ایپسوم متن ساختگی است که در هر زمان میتوان آن را تغییر یا ویرایش کنید.لورم ایپسوم متن ساختگی است که در هر زمان میتوان آن را تغییر یا ویرایش کنید.لورم ایپسوم متن ساختگی است که در هر زمان میتوان آن را تغییر یا ویرایش کنید.</p>
+                            <div class="ltn__testimoni-info-inner">
+                                <div class="ltn__testimoni-img">
+                                    <img src="{% static 'img/testimonial/1.jpg' %}" alt="#">
+                                </div>
+                                <div class="ltn__testimoni-name-designation">
+                                    <h5>طراحان وب</h5>
+                                    <label>خریدار</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="ltn__testimonial-item ltn__testimonial-item-7">
+                        <div class="ltn__testimoni-info">
+                            <p><i class="flaticon-left-quote-1"></i> 
+                                لورم ایپسوم متن ساختگی است که در هر زمان میتوان آن را تغییر یا ویرایش کنید.لورم ایپسوم متن ساختگی است که در هر زمان میتوان آن را تغییر یا ویرایش کنید.لورم ایپسوم متن ساختگی است که در هر زمان میتوان آن را تغییر یا ویرایش کنید.</p>
+                            <div class="ltn__testimoni-info-inner">
+                                <div class="ltn__testimoni-img">
+                                    <img src="{% static 'img/testimonial/1.jpg' %}" alt="#">
+                                </div>
+                                <div class="ltn__testimoni-name-designation">
+                                    <h5>طراحان وب</h5>
+                                    <label>خریدار</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+    </div>
+    <!-- TESTIMONIAL AREA END -->
+
+    <!-- BLOG AREA START (blog-3) -->
+    <div class="ltn__blog-area pt-115--- pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title-area ltn__section-title-2--- text-center">
+                        <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">اخبار وبلاگ</h6>
+                        <h1 class="section-title">جدیدترین اخبار</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row  ltn__blog-slider-one-active slick-arrow-1 ltn__blog-item-3-normal">
+                <!-- Blog Item -->
+                <div class="col-lg-12">
+                    <div class="ltn__blog-item ltn__blog-item-3">
+                        <div class="ltn__blog-img">
+                            <a href="blog-details.html"><img src="{% static 'img/blog/1.jpg' %}" alt="#"></a>
+                        </div>
+                        <div class="ltn__blog-brief">
+                            <div class="ltn__blog-meta">
+                                <ul>
+                                    <li class="ltn__blog-author">
+                                        <a href="#"><i class="far fa-user"></i>توسط: ادمین</a>
+                                    </li>
+                                    <li class="ltn__blog-tags">
+                                        <a href="#"><i class="fas fa-tags"></i>طراحان وب</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h3 class="ltn__blog-title"><a href="blog-details.html">10 روش عالی برای تزئین خانه</a></h3>
+                            <div class="ltn__blog-meta-btn">
+                                <div class="ltn__blog-meta">
+                                    <ul>
+                                        <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>20 خرداد 1400</li>
+                                    </ul>
+                                </div>
+                                <div class="ltn__blog-btn">
+                                    <a href="blog-details.html">ادامه مطلب</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog Item -->
+                <div class="col-lg-12">
+                    <div class="ltn__blog-item ltn__blog-item-3">
+                        <div class="ltn__blog-img">
+                            <a href="blog-details.html"><img src="{% static 'img/blog/2.jpg' %}" alt="#"></a>
+                        </div>
+                        <div class="ltn__blog-brief">
+                            <div class="ltn__blog-meta">
+                                <ul>
+                                    <li class="ltn__blog-author">
+                                       <a href="#"><i class="far fa-user"></i>توسط: ادمین</a>
+                                    </li>
+                                    <li class="ltn__blog-tags">
+                                        <a href="#"><i class="fas fa-tags"></i>طراحان وب</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h3 class="ltn__blog-title"><a href="blog-details.html">10 روش عالی برای تزئین خانه</a></h3>
+                            <div class="ltn__blog-meta-btn">
+                                <div class="ltn__blog-meta">
+                                    <ul>
+                                        <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>20 خرداد 1400</li>
+                                    </ul>
+                                </div>
+                                <div class="ltn__blog-btn">
+                                    <a href="blog-details.html">ادامه مطلب</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog Item -->
+                <div class="col-lg-12">
+                    <div class="ltn__blog-item ltn__blog-item-3">
+                        <div class="ltn__blog-img">
+                            <a href="blog-details.html"><img src="{% static 'img/blog/3.jpg' %}" alt="#"></a>
+                        </div>
+                        <div class="ltn__blog-brief">
+                            <div class="ltn__blog-meta">
+                                <ul>
+                                    <li class="ltn__blog-author">
+                                        <a href="#"><i class="far fa-user"></i>توسط: ادمین</a>
+                                    </li>
+                                    <li class="ltn__blog-tags">
+                                        <a href="#"><i class="fas fa-tags"></i>طراحان وب</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h3 class="ltn__blog-title"><a href="blog-details.html">10 روش عالی برای تزئین خانه</a></h3>
+                            <div class="ltn__blog-meta-btn">
+                                <div class="ltn__blog-meta">
+                                    <ul>
+                                        <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>20 خرداد 1400</li>
+                                    </ul>
+                                </div>
+                                <div class="ltn__blog-btn">
+                                    <a href="blog-details.html">ادامه مطلب</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog Item -->
+                <div class="col-lg-12">
+                    <div class="ltn__blog-item ltn__blog-item-3">
+                        <div class="ltn__blog-img">
+                            <a href="blog-details.html"><img src="{% static 'img/blog/4.jpg' %}" alt="#"></a>
+                        </div>
+                        <div class="ltn__blog-brief">
+                            <div class="ltn__blog-meta">
+                                <ul>
+                                    <li class="ltn__blog-author">
+                                        <a href="#"><i class="far fa-user"></i>توسط: ادمین</a>
+                                    </li>
+                                    <li class="ltn__blog-tags">
+                                        <a href="#"><i class="fas fa-tags"></i>طراحان وب</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h3 class="ltn__blog-title"><a href="blog-details.html">10 روش عالی برای تزئین خانه</a></h3>
+                            <div class="ltn__blog-meta-btn">
+                                <div class="ltn__blog-meta">
+                                    <ul>
+                                        <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>20 خرداد 1400</li>
+                                    </ul>
+                                </div>
+                                <div class="ltn__blog-btn">
+                                    <a href="blog-details.html">ادامه مطلب</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog Item -->
+                <div class="col-lg-12">
+                    <div class="ltn__blog-item ltn__blog-item-3">
+                        <div class="ltn__blog-img">
+                            <a href="blog-details.html"><img src="{% static 'img/blog/5.jpg' %}" alt="#"></a>
+                        </div>
+                        <div class="ltn__blog-brief">
+                            <div class="ltn__blog-meta">
+                                <ul>
+                                    <li class="ltn__blog-author">
+                                        <a href="#"><i class="far fa-user"></i>توسط: ادمین</a>
+                                    </li>
+                                    <li class="ltn__blog-tags">
+                                        <a href="#"><i class="fas fa-tags"></i>طراحان وب</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <h3 class="ltn__blog-title"><a href="blog-details.html">10 روش عالی برای تزئین خانه</a></h3>
+                            <div class="ltn__blog-meta-btn">
+                                <div class="ltn__blog-meta">
+                                    <ul>
+                                        <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i>20 خرداد 1400</li>
+                                    </ul>
+                                </div>
+                                <div class="ltn__blog-btn">
+                                    <a href="blog-details.html">ادامه مطلب</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+    </div>
+    <!-- BLOG AREA END -->
+
+    <!-- CALL TO ACTION START (call-to-action-6) -->
+    <div class="ltn__call-to-action-area call-to-action-6 before-bg-bottom" data-bg="{% static 'img/1.jpg' %}--">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="call-to-action-inner call-to-action-inner-6 ltn__secondary-bg text-center---">
+                        <div class="coll-to-info text-color-white">
+                            <h1>به دنبال خانه رویایی هستید ؟</h1>
+                            <p>ما می توانیم به شما کمک کنیم تا رویای خود را برای یک خانه جدید محقق کنید</p>
+                        </div>
+                        <div class="btn-wrapper">
+                            <a class="btn btn-effect-3 btn-white" href="contact.html">مشاهده ملک های بیشتر <i class="icon-next"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- CALL TO ACTION END -->
+
+{% endblock %}
