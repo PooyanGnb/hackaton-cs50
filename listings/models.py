@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils.text import slugify
-from jalali_date import date2jalali
 
 
 class Province(models.Model):
@@ -39,8 +38,7 @@ class Property(models.Model):
     province = models.ForeignKey(Province, on_delete=models.CASCADE)
     address = models.CharField(max_length=255)
     square_m = models.IntegerField()
-    rooms = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)], null=True, blank=True)
-    baths = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)], null=True, blank=True)
+    built_date = models.SmallIntegerField(validators=[MinValueValidator(1350), MaxValueValidator(1420)], null=True, blank=True)
     type_of_property = models.CharField(max_length=20, choices=PROPERTY_TYPES)
     type_of_contract = models.CharField(max_length=10, choices=CONTRACT_TYPES)
     price = models.BigIntegerField(validators=[MinValueValidator(0), MaxValueValidator(100000000000)])
@@ -77,3 +75,21 @@ class Property_Picture(models.Model):
 
     def __str__(self):
         return f'Picture for {self.propertyid.name}'
+    
+
+class Property_properties(models.Model):
+    propertyid = models.ForeignKey(Property, on_delete=models.CASCADE)
+    rooms = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)], null=True, blank=True)
+    baths = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)], null=True, blank=True)
+    parking = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)], null=True, blank=True)
+    floor = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(15)], null=True, blank=True)
+    pool = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)], null=True, blank=True)
+
+    def __str__(self):
+        return f'Property of {self.propertyid.name}'
+    
+    def num_to_bool(self, property):
+        if getattr(self, property):
+            return 'دارد'
+        else:
+            return 'ندارد'
