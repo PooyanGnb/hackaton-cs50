@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load jalali_tags %}
+{% load humanize %}
 
 {% block content %}
 
@@ -29,41 +31,15 @@
     <div class="ltn__img-slider-area mb-90">
         <div class="container-fluid">
             <div class="row ltn__image-slider-5-active slick-arrow-1 slick-arrow-1-inner ltn__no-gutter-all">
+                {% for image in images %}
                 <div class="col-lg-12">
                     <div class="ltn__img-slide-item-4">
-                        <a href="{% static 'img/img-slide/31.jpg' %}" data-rel="lightcase:myCollection">
-                            <img src="{% static 'img/img-slide/31.jpg' %}" alt="Image">
+                        <a href="{{image.picture.url}}" data-rel="lightcase:myCollection">
+                            <img src="{{image.picture.url}}" alt="Image">
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="ltn__img-slide-item-4">
-                        <a href="{% static 'img/img-slide/32.jpg' %}" data-rel="lightcase:myCollection">
-                            <img src="{% static 'img/img-slide/32.jpg' %}" alt="Image">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__img-slide-item-4">
-                        <a href="{% static 'img/img-slide/33.jpg' %}" data-rel="lightcase:myCollection">
-                            <img src="{% static 'img/img-slide/33.jpg' %}" alt="Image">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__img-slide-item-4">
-                        <a href="{% static 'img/img-slide/34.jpg' %}" data-rel="lightcase:myCollection">
-                            <img src="{% static 'img/img-slide/34.jpg' %}" alt="Image">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__img-slide-item-4">
-                        <a href="{% static 'img/img-slide/35.jpg' %}" data-rel="lightcase:myCollection">
-                            <img src="{% static 'img/img-slide/35.jpg' %}" alt="Image">
-                        </a>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -81,37 +57,35 @@
                                     <a href="#">ویژه ها</a>
                                 </li>
                                 <li class="ltn__blog-category">
-                                    <a class="bg-orange" href="#">اجاره</a>
+                                    <a class="bg-orange" href="#">{{property.type_of_contract}}</a>
                                 </li>
                                 <li class="ltn__blog-date">
-                                    <i class="far fa-calendar-alt"></i>14 تیر 1400
+                                    <i class="far fa-calendar-alt"></i>{{property.created_at|to_jalali:"%Y-%B-%d"}}
                                 </li>
                                 <li>
                                     <a href="#"><i class="far fa-comments"></i>35 نظر</a>
                                 </li>
                             </ul>
                         </div>
-                        <h1>واحد 120 متری عظیمیه</h1>
-                        <label><span class="ltn__secondary-color"><i class="flaticon-pin"></i></span> عظیمیه ، گلستان 12</label>
+                        <h1>{{property.name}}</h1>
+                        <label><span class="ltn__secondary-color"><i class="flaticon-pin"></i></span>{{property.city}}، {{property.address}}</label>
                         <h4 class="title-2">توضیحات</h4>
-                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p>
-                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                        <p>{{property.description}}</p>
 
                         <h4 class="title-2">جزئیات ملک</h4>  
                         <div class="property-detail-info-list section-bg-1 clearfix mb-60">                          
                             <ul>
                                 <li><label>شماره ملک: </label> <span>29</span></li>
-                                <li><label>متراژ: </label> <span>120 متر</span></li>
-                                <li><label>اتاق:</label> <span>7</span></li>
-                                <li><label>حمام:</label> <span>2</span></li>
+                                <li><label>متراژ: </label> <span>{{property.square_m}} متر</span></li>
+                                <li><label>اتاق:</label> <span>{{property.rooms}}</span></li>
+                                <li><label>حمام و دشتشویی:</label> <span>{{property.baths}}</span></li>
                                 <li><label>سال ساخت: </label> <span>1400</span></li>
                             </ul>
                             <ul>
                                 <li><label>زیربنا: </label> <span>50 متر </span></li>
                                 <li><label>پارکینگ: </label> <span>اختصاصی</span></li>
-                                <li><label>سرویس بهداشتی: </label> <span>7</span></li>
-                                <li><label>قیمت:</label> <span>1.800.000.000 تومان</span></li>
-                                <li><label>وضعیت:</label> <span>فروش و اجاره</span></li>
+                                <li><label>قیمت:</label> <span>{{property.price|intcomma:False}} تومان</span></li>
+                                <li><label>وضعیت:</label> <span>{{property.type_of_contract}}</span></li>
                             </ul>
                         </div>
                                         
