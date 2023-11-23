@@ -1,14 +1,25 @@
 from django.contrib import admin
 from .models import *
+from django.forms.models import  ModelForm
 
+
+
+class AlwaysChangedModelForm(ModelForm):
+    def has_changed(self, *args, **kwargs):
+        if self.instance.pk is None:
+            return True
+        return super(AlwaysChangedModelForm, self).has_changed(*args, **kwargs)
+    
 
 class Property_PictureAdmin(admin.StackedInline):
     model = Property_Picture
+    extra = 1
 
 
 class Property_propertiesAdmin(admin.TabularInline):
     model = Property_properties
-    extra = 1
+    extra = 0
+    form = AlwaysChangedModelForm
 
 
 class PropertyAdmin(admin.ModelAdmin):

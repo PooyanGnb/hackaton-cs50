@@ -57,6 +57,11 @@ class Property(models.Model):
             self.slug = slugify(self.name, allow_unicode=True)
         super().save(*args, **kwargs)
 
+        # if not Property_Picture.objects.filter(propertyid=self).exists():
+        #     default_picture = Property_Picture(propertyid=self, picture='5.jpg')
+        #     default_picture.save()
+
+
     def __str__(self):
         return self.name
     
@@ -76,14 +81,21 @@ class Property_Picture(models.Model):
     def __str__(self):
         return f'Picture for {self.propertyid.name}'
     
+    @property    
+    def imageURL(self):
+        try:
+            url = self.picture.url
+        except:
+            url = 'defaultpic.jpg'
+        return url
 
 class Property_properties(models.Model):
     propertyid = models.ForeignKey(Property, on_delete=models.CASCADE)
-    rooms = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)], null=True, blank=True)
-    baths = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)], null=True, blank=True)
-    parking = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)], null=True, blank=True)
-    floor = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(15)], null=True, blank=True)
-    pool = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)], null=True, blank=True)
+    rooms = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)], default= 0)
+    baths = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)], default= 0)
+    parking = models.BooleanField(default=False, null=True, blank=True)
+    floor = models.SmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(15)], default= 0)
+    pool = models.BooleanField(default=False, null=True, blank=True)
 
     def __str__(self):
         return f'Property of {self.propertyid.name}'
@@ -93,3 +105,9 @@ class Property_properties(models.Model):
             return 'دارد'
         else:
             return 'ندارد'
+
+    def null_to_zero(self, property):
+        if not getattr(self, property):
+            return '0'
+        else:
+            return getattr(self, property)
