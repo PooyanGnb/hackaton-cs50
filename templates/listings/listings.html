@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block content %}
 
@@ -72,10 +73,11 @@
                                         </div>
                                     </div>
                                     <!-- ltn__product-item -->
+                                    {% for prop in property %}
                                     <div class="col-xl-6 col-sm-6 col-12">
                                         <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                                             <div class="product-img">
-                                                <a href="product-details.html"><img src="{% static 'img/product-3/1.jpg' %}" alt="#"></a>
+                                                <a href="{% url 'listings:property' slug=prop.property.slug %}"><img src="{{ prop.picture.picture.url|default:'/media/defaultpic.jpg' }}" alt="{% url 'listings:property' slug=prop.property.slug %}"></a>
                                                 <div class="real-estate-agent">
                                                     <div class="agent-img">
                                                         <a href="team-details.html"><img src="{% static 'img/blog/author.jpg' %}" alt="#"></a>
@@ -85,25 +87,25 @@
                                             <div class="product-info">
                                                 <div class="product-badge">
                                                     <ul>
-                                                        <li class="sale-badg">اجاره</li>
+                                                        <li class="sale-badg">{{prop.property.type_of_contract}}</li>
                                                     </ul>
                                                 </div>
-                                                <h2 class="product-title"><a href="product-details.html">واحد 120 متری</a></h2>
+                                                <h2 class="product-title"><a href="{% url 'listings:property' slug=prop.property.slug %}">{{prop.property.name}}</a></h2>
                                                 <div class="product-img-location">
                                                     <ul>
                                                         <li>
-                                                            <a href="locations.html"><i class="flaticon-pin"></i> عظیمیه ، گلستان 12</a>
+                                                            <a href="{% url 'listings:property' slug=prop.property.slug %}"><i class="flaticon-pin"></i>{{prop.property.city.name}}, {{prop.property.address}}</a>
                                                         </li>
                                                     </ul>
                                                 </div>
                                                 <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                                                    <li><span>3 </span>
-                                                        حمام
-                                                    </li>
-                                                    <li><span>2 </span>
+                                                    <li><span>{{prop.belongings.baths}} </span>
                                                         سرویس بهداشتی
                                                     </li>
-                                                    <li><span>120 </span>
+                                                    <li><span>{{prop.belongings.rooms}} </span>
+                                                        اتاق
+                                                    </li>
+                                                    <li><span>{{prop.property.square_m}}</span>
                                                         متر
                                                     </li>
                                                 </ul>
@@ -128,322 +130,16 @@
                                             </div>
                                             <div class="product-info-bottom">
                                                 <div class="product-price">
-                                                    <span>ماهیانه<label>/5.000.000 تومان</label></span>
+                                                    {% if prop.property.type_of_contract == 'اجاره'%}
+                                                    <span><label>{{prop.property.price|intcomma:False}} تومان - {{prop.property.rent|intcomma:False}} تومان</label></span>
+                                                    {% else %}
+                                                    <span><label>{{prop.property.price|intcomma:False}} تومان</label></span>
+                                                    {% endif %}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- ltn__product-item -->
-                                    <div class="col-xl-6 col-sm-6 col-12">
-                                        <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
-                                            <div class="product-img">
-                                                <a href="product-details.html"><img src="{% static 'img/product-3/2.jpg' %}" alt="#"></a>
-                                                <div class="real-estate-agent">
-                                                    <div class="agent-img">
-                                                        <a href="team-details.html"><img src="{% static 'img/blog/author.jpg' %}" alt="#"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-badge">
-                                                    <ul>
-                                                        <li class="sale-badg">اجاره</li>
-                                                    </ul>
-                                                </div>
-                                                <h2 class="product-title"><a href="product-details.html">واحد 120 متری</a></h2>
-                                                <div class="product-img-location">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="locations.html"><i class="flaticon-pin"></i> عظیمیه ، گلستان 12</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                                                    <li><span>3 </span>
-                                                        حمام
-                                                    </li>
-                                                    <li><span>2 </span>
-                                                        سرویس بهداشتی
-                                                    </li>
-                                                    <li><span>120 </span>
-                                                        متر
-                                                    </li>
-                                                </ul>
-                                                <div class="product-hover-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" title="مشاهده سریع" data-toggle="modal" data-target="#quick_view_modal">
-                                                                <i class="flaticon-expand"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="علاقه مندی" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                                                <i class="flaticon-heart-1"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details.html" title="جزئیات محصول">
-                                                                <i class="flaticon-add"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="product-info-bottom">
-                                                <div class="product-price">
-                                                    <span>ماهیانه<label>/5.000.000 تومان</label></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ltn__product-item -->
-                                    <div class="col-xl-6 col-sm-6 col-12">
-                                        <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
-                                            <div class="product-img">
-                                                <a href="product-details.html"><img src="{% static 'img/product-3/3.jpg' %}" alt="#"></a>
-                                                <div class="real-estate-agent">
-                                                    <div class="agent-img">
-                                                        <a href="team-details.html"><img src="{% static 'img/blog/author.jpg' %}" alt="#"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-badge">
-                                                    <ul>
-                                                        <li class="sale-badg">اجاره</li>
-                                                    </ul>
-                                                </div>
-                                                <h2 class="product-title"><a href="product-details.html">واحد 120 متری</a></h2>
-                                                <div class="product-img-location">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="locations.html"><i class="flaticon-pin"></i> عظیمیه ، گلستان 12</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                                                    <li><span>3 </span>
-                                                        حمام
-                                                    </li>
-                                                    <li><span>2 </span>
-                                                        سرویس بهداشتی
-                                                    </li>
-                                                    <li><span>120 </span>
-                                                        متر
-                                                    </li>
-                                                </ul>
-                                                <div class="product-hover-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" title="مشاهده سریع" data-toggle="modal" data-target="#quick_view_modal">
-                                                                <i class="flaticon-expand"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="علاقه مندی" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                                                <i class="flaticon-heart-1"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details.html" title="جزئیات محصول">
-                                                                <i class="flaticon-add"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="product-info-bottom">
-                                                <div class="product-price">
-                                                    <span>ماهیانه<label>/5.000.000 تومان</label></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ltn__product-item -->
-                                    <div class="col-xl-6 col-sm-6 col-12">
-                                        <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
-                                            <div class="product-img">
-                                                <a href="product-details.html"><img src="{% static 'img/product-3/4.jpg' %}" alt="#"></a>
-                                                <div class="real-estate-agent">
-                                                    <div class="agent-img">
-                                                        <a href="team-details.html"><img src="{% static 'img/blog/author.jpg' %}" alt="#"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-badge">
-                                                    <ul>
-                                                        <li class="sale-badg">اجاره</li>
-                                                    </ul>
-                                                </div>
-                                                <h2 class="product-title"><a href="product-details.html">واحد 120 متری</a></h2>
-                                                <div class="product-img-location">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="locations.html"><i class="flaticon-pin"></i> عظیمیه ، گلستان 12</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                                                    <li><span>3 </span>
-                                                        حمام
-                                                    </li>
-                                                    <li><span>2 </span>
-                                                        سرویس بهداشتی
-                                                    </li>
-                                                    <li><span>120 </span>
-                                                        متر
-                                                    </li>
-                                                </ul>
-                                                <div class="product-hover-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" title="مشاهده سریع" data-toggle="modal" data-target="#quick_view_modal">
-                                                                <i class="flaticon-expand"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="علاقه مندی" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                                                <i class="flaticon-heart-1"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details.html" title="جزئیات محصول">
-                                                                <i class="flaticon-add"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="product-info-bottom">
-                                                <div class="product-price">
-                                                    <span>ماهیانه<label>/5.000.000 تومان</label></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ltn__product-item -->
-                                    <div class="col-xl-6 col-sm-6 col-12">
-                                        <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
-                                            <div class="product-img">
-                                                <a href="product-details.html"><img src="{% static 'img/product-3/5.jpg' %}" alt="#"></a>
-                                                <div class="real-estate-agent">
-                                                    <div class="agent-img">
-                                                        <a href="team-details.html"><img src="{% static 'img/blog/author.jpg' %}" alt="#"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-badge">
-                                                    <ul>
-                                                        <li class="sale-badg">اجاره</li>
-                                                    </ul>
-                                                </div>
-                                                <h2 class="product-title"><a href="product-details.html">واحد 120 متری</a></h2>
-                                                <div class="product-img-location">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="locations.html"><i class="flaticon-pin"></i> عظیمیه ، گلستان 12</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                                                    <li><span>3 </span>
-                                                        حمام
-                                                    </li>
-                                                    <li><span>2 </span>
-                                                        سرویس بهداشتی
-                                                    </li>
-                                                    <li><span>120 </span>
-                                                        متر
-                                                    </li>
-                                                </ul>
-                                                <div class="product-hover-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" title="مشاهده سریع" data-toggle="modal" data-target="#quick_view_modal">
-                                                                <i class="flaticon-expand"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="علاقه مندی" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                                                <i class="flaticon-heart-1"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details.html" title="جزئیات محصول">
-                                                                <i class="flaticon-add"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="product-info-bottom">
-                                                <div class="product-price">
-                                                    <span>ماهیانه<label>/5.000.000 تومان</label></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ltn__product-item -->
-                                    <div class="col-xl-6 col-sm-6 col-12">
-                                        <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
-                                            <div class="product-img">
-                                                <a href="product-details.html"><img src="{% static 'img/product-3/6.jpg' %}" alt="#"></a>
-                                                <div class="real-estate-agent">
-                                                    <div class="agent-img">
-                                                        <a href="team-details.html"><img src="{% static 'img/blog/author.jpg' %}" alt="#"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-badge">
-                                                    <ul>
-                                                        <li class="sale-badg">اجاره</li>
-                                                    </ul>
-                                                </div>
-                                                <h2 class="product-title"><a href="product-details.html">واحد 120 متری</a></h2>
-                                                <div class="product-img-location">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="locations.html"><i class="flaticon-pin"></i> عظیمیه ، گلستان 12</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                                                    <li><span>3 </span>
-                                                        حمام
-                                                    </li>
-                                                    <li><span>2 </span>
-                                                        سرویس بهداشتی
-                                                    </li>
-                                                    <li><span>120 </span>
-                                                        متر
-                                                    </li>
-                                                </ul>
-                                                <div class="product-hover-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" title="مشاهده سریع" data-toggle="modal" data-target="#quick_view_modal">
-                                                                <i class="flaticon-expand"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="علاقه مندی" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                                                <i class="flaticon-heart-1"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details.html" title="جزئیات محصول">
-                                                                <i class="flaticon-add"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="product-info-bottom">
-                                                <div class="product-price">
-                                                    <span>ماهیانه<label>/5.000.000 تومان</label></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--  -->
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -460,38 +156,43 @@
                                         </div>
                                     </div>
                                     <!-- ltn__product-item -->
+                                    {% for prop in property %}
                                     <div class="col-lg-12">
                                         <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5">
                                             <div class="product-img">
-                                                <a href="product-details.html"><img src="{% static 'img/product-3/1.jpg' %}" alt="#"></a>
+                                                <a href="{% url 'listings:property' slug=prop.property.slug %}"><img src="{{ prop.picture.picture.url|default:'/media/defaultpic.jpg' }}" alt="{% url 'listings:property' slug=prop.property.slug %}"></a>
                                             </div>
                                             <div class="product-info">
                                                 <div class="product-badge-price">
                                                     <div class="product-badge">
                                                         <ul>
-                                                            <li class="sale-badg">اجاره</li>
+                                                            <li class="sale-badg">{{prop.property.type_of_contract}}</li>
                                                         </ul>
                                                     </div>
                                                     <div class="product-price">
-                                                    <span>ماهیانه<label>/5.000.000 تومان</label></span>
+                                                        {% if prop.property.type_of_contract == 'اجاره'%}
+                                                        <span><label>{{prop.property.price|intcomma:False}} تومان - {{prop.property.rent|intcomma:False}} تومان</label></span>
+                                                        {% else %}
+                                                        <span><label>{{prop.property.price|intcomma:False}} تومان</label></span>
+                                                        {% endif %}
                                                     </div>
                                                 </div>
-                                                <h2 class="product-title"><a href="product-details.html">واحد 120 متری</a></h2>
+                                                <h2 class="product-title"><a href="{% url 'listings:property' slug=prop.property.slug %}">{{prop.property.name}}</a></h2>
                                                 <div class="product-img-location">
                                                     <ul>
                                                         <li>
-                                                            <a href="locations.html"><i class="flaticon-pin"></i> عظیمیه َ، گلستان 12</a>
+                                                            <a href="locations.html"><i class="flaticon-pin"></i>{{prop.property.city.name}}, {{prop.property.address}}</a>
                                                         </li>
                                                     </ul>
                                                 </div>
                                                 <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                                                    <li><span>3 </span>
-                                                        حمام
-                                                    </li>
-                                                    <li><span>2 </span>
+                                                    <li><span>{{prop.belongings.baths}} </span>
                                                         سرویس بهداشتی
                                                     </li>
-                                                    <li><span>120 </span>
+                                                    <li><span>{{prop.belongings.rooms}} </span>
+                                                        اتاق
+                                                    </li>
+                                                    <li><span>{{prop.property.square_m}}</span>
                                                         متر
                                                     </li>
                                                 </ul>
@@ -527,279 +228,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- ltn__product-item -->
-                                    <div class="col-lg-12">
-                                        <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5">
-                                            <div class="product-img">
-                                                <a href="product-details.html"><img src="{% static 'img/product-3/2.jpg' %}" alt="#"></a>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-badge-price">
-                                                    <div class="product-badge">
-                                                        <ul>
-                                                            <li class="sale-badg">اجاره</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product-price">
-                                                    <span>ماهیانه<label>/5.000.000 تومان</label></span>
-                                                    </div>
-                                                </div>
-                                                <h2 class="product-title"><a href="product-details.html">واحد 120 متری</a></h2>
-                                                <div class="product-img-location">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="locations.html"><i class="flaticon-pin"></i> عظیمیه َ، گلستان 12</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                                                    <li><span>3 </span>
-                                                        حمام
-                                                    </li>
-                                                    <li><span>2 </span>
-                                                        سرویس بهداشتی
-                                                    </li>
-                                                    <li><span>120 </span>
-                                                        متر
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="product-info-bottom">
-                                                <div class="real-estate-agent">
-                                                    <div class="agent-img">
-                                                        <a href="team-details.html"><img src="{% static 'img/blog/author.jpg' %}" alt="#"></a>
-                                                    </div>
-                                                    <div class="agent-brief">
-                                                        <h6><a href="team-details.html">طراحان وب</a></h6>
-                                                        <small>مدیریت املاک</small>
-                                                    </div>
-                                                </div>
-                                                <div class="product-hover-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" title="مشاهده سریع" data-toggle="modal" data-target="#quick_view_modal">
-                                                                <i class="flaticon-expand"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="علاقه مندی" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                                                <i class="flaticon-heart-1"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details.html" title="جزئیات محصول">
-                                                                <i class="flaticon-add"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ltn__product-item -->
-                                    <div class="col-lg-12">
-                                        <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5">
-                                            <div class="product-img">
-                                                <a href="product-details.html"><img src="{% static 'img/product-3/3.jpg' %}" alt="#"></a>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-badge-price">
-                                                    <div class="product-badge">
-                                                        <ul>
-                                                            <li class="sale-badg">اجاره</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product-price">
-                                                    <span>ماهیانه<label>/5.000.000 تومان</label></span>
-                                                    </div>
-                                                </div>
-                                                <h2 class="product-title"><a href="product-details.html">واحد 120 متری</a></h2>
-                                                <div class="product-img-location">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="locations.html"><i class="flaticon-pin"></i> عظیمیه َ، گلستان 12</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                                                    <li><span>3 </span>
-                                                        حمام
-                                                    </li>
-                                                    <li><span>2 </span>
-                                                        سرویس بهداشتی
-                                                    </li>
-                                                    <li><span>120 </span>
-                                                        متر
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="product-info-bottom">
-                                                <div class="real-estate-agent">
-                                                    <div class="agent-img">
-                                                        <a href="team-details.html"><img src="{% static 'img/blog/author.jpg' %}" alt="#"></a>
-                                                    </div>
-                                                    <div class="agent-brief">
-                                                        <h6><a href="team-details.html">طراحان وب</a></h6>
-                                                        <small>مدیریت املاک</small>
-                                                    </div>
-                                                </div>
-                                                <div class="product-hover-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" title="مشاهده سریع" data-toggle="modal" data-target="#quick_view_modal">
-                                                                <i class="flaticon-expand"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="علاقه مندی" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                                                <i class="flaticon-heart-1"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details.html" title="جزئیات محصول">
-                                                                <i class="flaticon-add"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ltn__product-item -->
-                                    <div class="col-lg-12">
-                                        <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5">
-                                            <div class="product-img">
-                                                <a href="product-details.html"><img src="{% static 'img/product-3/4.jpg' %}" alt="#"></a>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-badge-price">
-                                                    <div class="product-badge">
-                                                        <ul>
-                                                            <li class="sale-badg">اجاره</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product-price">
-                                                    <span>ماهیانه<label>/5.000.000 تومان</label></span>
-                                                    </div>
-                                                </div>
-                                                <h2 class="product-title"><a href="product-details.html">واحد 120 متری</a></h2>
-                                                <div class="product-img-location">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="locations.html"><i class="flaticon-pin"></i> عظیمیه َ، گلستان 12</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                                                    <li><span>3 </span>
-                                                        حمام
-                                                    </li>
-                                                    <li><span>2 </span>
-                                                        سرویس بهداشتی
-                                                    </li>
-                                                    <li><span>120 </span>
-                                                        متر
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="product-info-bottom">
-                                                <div class="real-estate-agent">
-                                                    <div class="agent-img">
-                                                        <a href="team-details.html"><img src="{% static 'img/blog/author.jpg' %}" alt="#"></a>
-                                                    </div>
-                                                    <div class="agent-brief">
-                                                        <h6><a href="team-details.html">طراحان وب</a></h6>
-                                                        <small>مدیریت املاک</small>
-                                                    </div>
-                                                </div>
-                                                <div class="product-hover-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" title="مشاهده سریع" data-toggle="modal" data-target="#quick_view_modal">
-                                                                <i class="flaticon-expand"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="علاقه مندی" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                                                <i class="flaticon-heart-1"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details.html" title="جزئیات محصول">
-                                                                <i class="flaticon-add"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- ltn__product-item -->
-                                    <div class="col-lg-12">
-                                        <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5">
-                                            <div class="product-img">
-                                                <a href="product-details.html"><img src="{% static 'img/product-3/5.jpg' %}" alt="#"></a>
-                                            </div>
-                                            <div class="product-info">
-                                                <div class="product-badge-price">
-                                                    <div class="product-badge">
-                                                        <ul>
-                                                            <li class="sale-badg">اجاره</li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product-price">
-                                                    <span>ماهیانه<label>/5.000.000 تومان</label></span>
-                                                    </div>
-                                                </div>
-                                                <h2 class="product-title"><a href="product-details.html">واحد 120 متری</a></h2>
-                                                <div class="product-img-location">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="locations.html"><i class="flaticon-pin"></i> عظیمیه َ، گلستان 12</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
-                                                    <li><span>3 </span>
-                                                        حمام
-                                                    </li>
-                                                    <li><span>2 </span>
-                                                        سرویس بهداشتی
-                                                    </li>
-                                                    <li><span>120 </span>
-                                                        متر
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="product-info-bottom">
-                                                <div class="real-estate-agent">
-                                                    <div class="agent-img">
-                                                        <a href="team-details.html"><img src="{% static 'img/blog/author.jpg' %}" alt="#"></a>
-                                                    </div>
-                                                    <div class="agent-brief">
-                                                        <h6><a href="team-details.html">طراحان وب</a></h6>
-                                                        <small>مدیریت املاک</small>
-                                                    </div>
-                                                </div>
-                                                <div class="product-hover-action">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#" title="مشاهده سریع" data-toggle="modal" data-target="#quick_view_modal">
-                                                                <i class="flaticon-expand"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" title="علاقه مندی" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                                                <i class="flaticon-heart-1"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details.html" title="جزئیات محصول">
-                                                                <i class="flaticon-add"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--  -->
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
