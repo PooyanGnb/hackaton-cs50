@@ -43,7 +43,6 @@ class Property(models.Model):
     type_of_contract = models.CharField(max_length=10, choices=CONTRACT_TYPES)
     price = models.BigIntegerField(validators=[MinValueValidator(0), MaxValueValidator(100000000000)])
     rent = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(250000000)], blank=True, null=True)
-    # pictures = models.ManyToManyField('PropertyPicture', blank=True)
     counted_views = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     published_at = models.DateTimeField(auto_now=True)
@@ -57,22 +56,23 @@ class Property(models.Model):
             self.slug = slugify(self.name, allow_unicode=True)
         super().save(*args, **kwargs)
 
-        # if not Property_Picture.objects.filter(propertyid=self).exists():
-        #     default_picture = Property_Picture(propertyid=self, picture='5.jpg')
-        #     default_picture.save()
-
-
     def __str__(self):
         return self.name
     
+    #automatically increases number of vieww
     def view_increament(self):
         self.counted_views += 1
         self.save()
 
-    # def get_jalali_date(self):
-    #     jmonths = ['فروردین', 'اردیبهشت', 'خرداد', 'مرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند']
-    #     jdate = date2jalali(self.created_at)
-    #     return 
+    @property
+    def contract_count(self):
+        return Property.objects.filter(type_of_contract=self.type_of_contract)
+        
+    @property
+    def property_count(self):
+        return Property.objects.filter(type_of_property=self.type_of_property)
+
+
 
 class Property_Picture(models.Model):
     propertyid = models.ForeignKey(Property, on_delete=models.CASCADE)
@@ -81,13 +81,6 @@ class Property_Picture(models.Model):
     def __str__(self):
         return f'Picture for {self.propertyid.name}'
     
-    @property
-    def imageURL(self):
-        try:
-            url = self.picture.url
-        except AttributeError:
-            url = 'defaultpic.jpg'
-        return url
 
 class Property_properties(models.Model):
     propertyid = models.ForeignKey(Property, on_delete=models.CASCADE)
@@ -100,12 +93,14 @@ class Property_properties(models.Model):
     def __str__(self):
         return f'Property of {self.propertyid.name}'
     
+    # a function to make numbers into boolean. if it is True, it will show دارد and otherwise it will show ندارد
     def num_to_bool(self, property):
         if getattr(self, property):
             return 'دارد'
         else:
             return 'ندارد'
-    
+        
+    # a function to null to 0
     def null_to_zero(self, property):
         if not getattr(self, property):
             return '0'

@@ -18,6 +18,7 @@ def listings_properties(request):
     context = {'property': property_list}
     return render(request, 'listings/listings.html', context)
 
+
 def listings_details(request, slug):
     property = get_object_or_404(Property.objects.all(), slug=slug)
     images = Property_Picture.objects.filter(propertyid__slug=slug)
@@ -30,3 +31,18 @@ def listings_details(request, slug):
     context = {'images': images, 'property': property, 'belonging': belonging}
     return render(request, 'listings/product-details.html', context)
 
+
+def listings_search(request):
+    if s := request.GET.get('s'):
+        property = Property.objects.filter(name__contains=s)
+        property_list = list()
+        for prop in property:
+            firstpic = Property_Picture.objects.filter(propertyid=prop).first()
+            belongings = Property_properties.objects.filter(propertyid=prop).first()
+            belongings.parking = belongings.num_to_bool('parking')
+            belongings.pool = belongings.num_to_bool('pool')
+            belongings.rooms = belongings.null_to_zero('rooms')
+            belongings.baths = belongings.null_to_zero('baths')
+            property_list.append({'property': prop, 'picture': firstpic, 'belongings':belongings})
+    context = {'property': property_list}
+    return render(request, 'listings/listings.html', context)

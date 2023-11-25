@@ -66,8 +66,8 @@
                                     <div class="col-lg-12">
                                         <!-- Search Widget -->
                                         <div class="ltn__search-widget mb-30">
-                                            <form action="#">
-                                                <input type="text" name="search" placeholder="جستجو برای ...">
+                                            <form action="{% url 'listings:search' %}">
+                                                <input type="text" name="s" placeholder="جستجو برای ...">
                                                 <button type="submit"><i class="fas fa-search"></i></button>
                                             </form>
                                         </div>
@@ -149,8 +149,8 @@
                                     <div class="col-lg-12">
                                         <!-- Search Widget -->
                                         <div class="ltn__search-widget mb-30">
-                                            <form action="#">
-                                                <input type="text" name="search" placeholder="جستجو برای ...">
+                                            <form action="{% url 'listings:search' %}">
+                                                <input type="text" name="s" placeholder="جستجو برای ...">
                                                 <button type="submit"><i class="fas fa-search"></i></button>
                                             </form>
                                         </div>
@@ -564,8 +564,8 @@
                         <!-- Search Widget -->
                         <div class="widget ltn__search-widget d-none">
                             <h4 class="ltn__widget-title ltn__widget-title-border">موضوع جستجو</h4>
-                            <form action="#">
-                                <input type="text" name="search" placeholder="جستجو برای ...">
+                            <form action="{% url 'listings:search' %}">
+                                <input type="text" name="s" placeholder="جستجو برای ...">
                                 <button type="submit"><i class="fas fa-search"></i></button>
                             </form>
                         </div>
